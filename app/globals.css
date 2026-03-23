@@ -1,0 +1,354 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+/* ============================================================
+   WINDOWS XP THEME  [data-theme="xp"]
+   Luna Blue — Tahoma, classic XP chrome
+   ============================================================ */
+[data-theme="xp"] {
+  --crt-bg:           #ECE9D8;
+  --crt-paper:        #FFFFFF;
+  --crt-brown:        #000000;
+  --crt-brown-dim:    #666666;
+  --crt-brown-bright: #003399;
+  --crt-amber:        #FF6600;
+  --crt-amber-dim:    #CC5500;
+  --crt-scanline:     transparent;
+  --crt-glow:         none;
+  --crt-glow-sm:      none;
+  --crt-border-col:   #ACA899;
+  --xp-titlebar-start:#0A246A;
+  --xp-titlebar-end:  #A6CAF0;
+  --xp-btn-face:      #ECE9D8;
+  --xp-btn-shadow:    #ACA899;
+  --xp-btn-highlight: #FFFFFF;
+  --xp-active:        #316AC5;
+  --xp-taskbar:       #245EDC;
+  --font-ui: 'Tahoma', 'Arial', sans-serif;
+}
+
+/* ============================================================
+   MAC OS 9 / CLASSIC MACOS THEME  [data-theme="mac"]
+   Platinum Aqua — Charcoal, Chicago/Geneva inspired
+   ============================================================ */
+[data-theme="mac"] {
+  --crt-bg:           #AAAAAA;
+  --crt-paper:        #DDDDDD;
+  --crt-brown:        #111111;
+  --crt-brown-dim:    #555555;
+  --crt-brown-bright: #000000;
+  --crt-amber:        #0055CC;
+  --crt-amber-dim:    #3377DD;
+  --crt-scanline:     transparent;
+  --crt-glow:         none;
+  --crt-glow-sm:      none;
+  --crt-border-col:   #888888;
+  --mac-menubar:      #CCCCCC;
+  --mac-titlebar:     linear-gradient(to bottom, #DDDDDD 0%, #AAAAAA 100%);
+  --mac-btn-close:    #FF5F57;
+  --mac-btn-min:      #FFBD2E;
+  --mac-btn-max:      #28C840;
+  --mac-stripe1:      #888888;
+  --mac-stripe2:      #CCCCCC;
+  --font-ui: 'Geneva', 'Charcoal', 'Chicago', 'Arial', sans-serif;
+}
+
+/* XP: kill CRT effects */
+[data-theme="xp"] .crt-scanlines::before,
+[data-theme="xp"] .crt-vignette::after,
+[data-theme="mac"] .crt-scanlines::before,
+[data-theme="mac"] .crt-vignette::after {
+  display: none;
+}
+
+/* XP: no glow, no flicker */
+[data-theme="xp"] .glow,
+[data-theme="mac"] .glow {
+  text-shadow: none;
+  color: var(--crt-brown-bright);
+}
+[data-theme="xp"] .glow-sm,
+[data-theme="mac"] .glow-sm,
+[data-theme="xp"] .glow-dim,
+[data-theme="mac"] .glow-dim {
+  text-shadow: none;
+  color: var(--crt-brown-dim);
+}
+[data-theme="xp"] .flicker,
+[data-theme="mac"] .flicker {
+  animation: none;
+}
+
+/* XP: use Tahoma font */
+[data-theme="xp"] body,
+[data-theme="xp"] * {
+  font-family: 'Tahoma', 'Arial', sans-serif !important;
+  letter-spacing: 0 !important;
+}
+[data-theme="xp"] h1,
+[data-theme="xp"] h2 {
+  font-family: 'Tahoma', 'Arial', sans-serif !important;
+}
+
+/* MAC: use Geneva font */
+[data-theme="mac"] body,
+[data-theme="mac"] * {
+  font-family: 'Geneva', 'Charcoal', 'Arial', sans-serif !important;
+  letter-spacing: 0 !important;
+}
+
+/* ============================================================
+   THEME TRANSITION FLASH
+   ============================================================ */
+@keyframes theme-flash {
+  0%   { opacity: 0; }
+  15%  { opacity: 1; }
+  40%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+.theme-flash {
+  animation: theme-flash 0.7s ease forwards;
+}
+
+@keyframes theme-static {
+  0%   { opacity: 0; }
+  5%   { opacity: 0.9; }
+  10%  { opacity: 0.4; }
+  15%  { opacity: 0.95; }
+  25%  { opacity: 0.3; }
+  35%  { opacity: 0.8; }
+  50%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+.theme-static {
+  animation: theme-static 0.7s steps(1) forwards;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Brown / warm sepia light-mode CRT palette */
+  --background: oklch(0.96 0.03 65);
+  --foreground: oklch(0.22 0.05 50);
+  --card: oklch(0.93 0.04 65);
+  --card-foreground: oklch(0.22 0.05 50);
+  --popover: oklch(0.93 0.04 65);
+  --popover-foreground: oklch(0.22 0.05 50);
+  --primary: oklch(0.42 0.10 50);
+  --primary-foreground: oklch(0.96 0.02 65);
+  --secondary: oklch(0.88 0.05 65);
+  --secondary-foreground: oklch(0.32 0.07 50);
+  --muted: oklch(0.90 0.04 65);
+  --muted-foreground: oklch(0.50 0.06 55);
+  --accent: oklch(0.55 0.14 50);
+  --accent-foreground: oklch(0.96 0.02 65);
+  --destructive: oklch(0.55 0.2 27);
+  --destructive-foreground: oklch(0.96 0.02 65);
+  --border: oklch(0.72 0.07 55);
+  --input: oklch(0.88 0.05 65);
+  --ring: oklch(0.50 0.10 50);
+  --radius: 0.15rem;
+
+  /* CRT custom tokens — warm amber/brown phosphor */
+  --crt-bg:          #f5ede0;
+  --crt-paper:       #ede0cc;
+  --crt-brown:       #7a4a1e;
+  --crt-brown-dim:   #b8895a;
+  --crt-brown-bright:#4a2800;
+  --crt-amber:       #c47a1a;
+  --crt-amber-dim:   #d9a86e;
+  --crt-scanline:    rgba(120, 60, 10, 0.06);
+  --crt-glow:        0 0 6px #c47a1a99, 0 0 16px #7a4a1e44;
+  --crt-glow-sm:     0 0 4px #c47a1a88, 0 0 10px #7a4a1e33;
+  --crt-border-col:  #b8895a;
+}
+
+@theme inline {
+  --font-sans: 'Share Tech Mono', 'Courier New', monospace;
+  --font-mono: 'Share Tech Mono', 'Courier New', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-mono;
+    background-color: var(--crt-bg);
+    color: var(--crt-brown);
+  }
+
+  ::selection {
+    background-color: var(--crt-brown);
+    color: var(--crt-bg);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    background: var(--crt-paper);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--crt-brown-dim);
+    border-radius: 0;
+  }
+}
+
+/* ===================== CRT EFFECTS ===================== */
+
+/* Scanlines — light warm tint */
+.crt-scanlines::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(100, 40, 0, 0.055) 2px,
+    rgba(100, 40, 0, 0.055) 4px
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* CRT vignette — warm edges */
+.crt-vignette::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(80, 30, 0, 0.18) 100%
+  );
+  pointer-events: none;
+  z-index: 9997;
+}
+
+/* Phosphor glow — warm amber */
+.glow {
+  text-shadow: var(--crt-glow);
+  color: var(--crt-brown-bright);
+}
+.glow-sm {
+  text-shadow: var(--crt-glow-sm);
+}
+.glow-dim {
+  text-shadow: 0 0 4px rgba(180, 100, 20, 0.4);
+  color: var(--crt-brown-dim);
+}
+
+/* Blinking cursor */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.cursor::after {
+  content: '█';
+  display: inline-block;
+  animation: blink 1.1s step-start infinite;
+  color: var(--crt-brown);
+  text-shadow: var(--crt-glow-sm);
+}
+
+/* CRT flicker */
+@keyframes flicker {
+  0%   { opacity: 1; }
+  3%   { opacity: 0.94; }
+  6%   { opacity: 1; }
+  50%  { opacity: 0.99; }
+  53%  { opacity: 0.95; }
+  56%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+.flicker {
+  animation: flicker 7s infinite;
+}
+
+/* Horizontal glitch */
+@keyframes h-glitch {
+  0%   { clip-path: inset(0 0 100% 0); opacity: 0; }
+  2%   { clip-path: inset(40% 0 50% 0); opacity: 0.7; transform: translate(-4px, 0); }
+  4%   { clip-path: inset(0 0 100% 0); opacity: 0; }
+  96%  { clip-path: inset(0 0 100% 0); opacity: 0; }
+  98%  { clip-path: inset(60% 0 30% 0); opacity: 0.7; transform: translate(4px, 0); }
+  100% { clip-path: inset(0 0 100% 0); opacity: 0; }
+}
+.glitch-layer {
+  animation: h-glitch 9s infinite;
+  position: absolute;
+  top: 0; left: 0; width: 100%;
+  pointer-events: none;
+  color: var(--crt-amber);
+}
+
+/* Boot sequence */
+@keyframes boot-in {
+  0%   { opacity: 0; transform: scaleY(0.01); }
+  5%   { opacity: 0.8; transform: scaleY(0.01); }
+  10%  { opacity: 1; transform: scaleY(0.12); }
+  30%  { opacity: 1; transform: scaleY(1.02); }
+  40%  { opacity: 1; transform: scaleY(1); }
+  100% { opacity: 1; transform: scaleY(1); }
+}
+.boot-in {
+  animation: boot-in 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* CRT borders */
+.crt-border {
+  border: 1px solid var(--crt-border-col);
+  box-shadow: inset 0 0 10px rgba(180, 100, 20, 0.06), 0 0 6px rgba(180, 100, 20, 0.08);
+}
+.crt-border-bright {
+  border: 1px solid var(--crt-brown);
+  box-shadow: inset 0 0 12px rgba(180, 100, 20, 0.10), 0 0 12px rgba(180, 100, 20, 0.15);
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 22s linear infinite;
+  display: flex;
+  width: max-content;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Links */
+a {
+  color: var(--crt-brown);
+  text-decoration: none;
+  transition: color 0.1s, text-shadow 0.1s;
+}
+a:hover {
+  color: var(--crt-brown-bright);
+  text-shadow: var(--crt-glow-sm);
+}

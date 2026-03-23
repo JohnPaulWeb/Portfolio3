@@ -1,2 +1,3 @@
+*PORTFOLIO
 # REMINDER
-*this is clone, not just my own doing i just changes the text and inforamation
+*this is clone in V0, not just my own doing i just changes the text and inforamation

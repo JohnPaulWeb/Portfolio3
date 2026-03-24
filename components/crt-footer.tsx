@@ -12,7 +12,7 @@ export function CRTFooter() {
               className="glow text-3xl mb-2"
               style={{ fontFamily: "VT323, monospace" }}
             >
-              YADWINDER.COM
+              Ayanokoji.COM
             </div>
             <div className="text-xs glow-dim tracking-widest mb-4">
               FREELANCE PRODUCT DESIGNER

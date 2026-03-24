@@ -3,21 +3,21 @@
 const SKILLS = [
   {
     id: "01",
-    title: "PRODUCT DESIGN",
+    title: "Web Developer",
     desc: "End-to-end product design for startups — from early-stage discovery and wireframes to high-fidelity UI and handoff-ready specs.",
     stat: "TOOL: FIGMA + FRAMER",
     icon: "◉",
   },
   {
     id: "02",
-    title: "UX RESEARCH",
+    title: "Front End",
     desc: "User interviews, usability tests, and synthesis sessions that turn fuzzy problems into clear design decisions.",
     stat: "TOOL: FIGMA + NOTION",
     icon: "▓",
   },
   {
     id: "03",
-    title: "UI DESIGN",
+    title: "Backend",
     desc: "Pixel-perfect interfaces with consistent design systems — responsive, accessible, and built to hand off cleanly.",
     stat: "TOOL: FIGMA + AUTO LAYOUT",
     icon: "◈",

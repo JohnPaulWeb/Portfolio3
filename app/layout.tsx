@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Yadwinder Singh — Product Designer',
+  title: 'Ayanokoji - Web Developer',
   description: 'Freelance Product Designer helping early-stage startups build world-class products through clarity, craft, and pixel-perfect design.',
 }
 

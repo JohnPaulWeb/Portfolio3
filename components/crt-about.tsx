@@ -42,13 +42,13 @@ export function CRTAbout() {
               $ cat bio.txt
             </div>
             <p>
-              I'm Yadwinder Singh — a freelance product designer working with early-stage startups and ambitious founders to help them bring clarity and craft into their ideas.
+             I am John Paul A. Braganza a Freelancer at the of 17 years old, with a passion for crafting visually stunning and user-centric digital experiences. With a keen eye for detail and a commitment to excellence, I specialize in creating intuitive interfaces that seamlessly blend aesthetics with functionality.
             </p>
             <p>
-              I help teams build world-class products that their users are going to love. I believe in moving fast, iterating till clarity, and never compromising on pixel-perfect execution.
+              I collaborate closely with clients to understand their unique needs and translate them into compelling designs that resonate with their target audience. My expertise spans across various design tools and methodologies, allowing me to deliver innovative solutions that drive engagement and elevate brand presence.
             </p>
             <p style={{ color: "var(--crt-brown-dim)" }}>
-              When I'm not designing, I'm playing cricket, watching movies, or listening to hip hop music while working. Usually all three at once.
+              I like to create website and apps and games that are not only visually appealing but also provide an exceptional user experience. I am always eager to take on new challenges and push the boundaries of design to create impactful digital products.
             </p>
             <div className="pt-3" style={{ borderTop: "1px solid var(--crt-border-col)" }}>
               <span

@@ -56,7 +56,7 @@ export function CRTHero() {
       <div className="text-center relative z-10 w-full max-w-4xl mx-auto">
         {/* System prompt line */}
         <div className="text-xs tracking-[0.3em] mb-6 glow-dim">
-          C:\PORTFOLIO\&gt; LOADING_AYANOKOJI{dots}
+          C:\PORTFOLIO\&gt; LOADING_John Paul{dots}
         </div>
 
         {/* Main name */}
@@ -69,7 +69,7 @@ export function CRTHero() {
             color: "var(--crt-brown-bright)",
           }}
         >
-          Kiyotaka
+          John Paul
         </h1>
         <h1
           className="glow flicker leading-none mb-4"
@@ -80,7 +80,7 @@ export function CRTHero() {
             color: "var(--crt-brown-bright)",
           }}
         >
-          Ayanokoji
+          Braganza
         </h1>
 
         {/* Subtitle */}

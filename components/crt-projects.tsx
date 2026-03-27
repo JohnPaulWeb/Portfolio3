@@ -82,7 +82,7 @@ export function CRTProjects() {
             SEE ALL PROJECTS
           </div>
           <div className="text-xs tracking-widest" style={{ color: "var(--crt-brown-dim)" }}>
-            ayanokoji.com/work
+            johnpaul.com/work
           </div>
           <div
             className="text-2xl mt-4 transition-transform duration-200 group-hover:translate-x-2"

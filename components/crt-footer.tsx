@@ -71,7 +71,7 @@ export function CRTFooter() {
             color: "var(--crt-brown-dim)",
           }}
         >
-          <div>© 2024–2026 YADWINDER SINGH — ALL RIGHTS RESERVED</div>
+          <div>© John Paul A. Braganza— ALL RIGHTS RESERVED</div>
           <div className="flex items-center gap-2">
             <span
               className="inline-block w-1.5 h-1.5 rounded-full"

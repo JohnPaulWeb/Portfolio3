@@ -32,7 +32,7 @@ function XPNav() {
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <span style={{ fontSize: "12px", color: "#FFD700", fontWeight: "bold" }}>⊞</span>
           <span style={{ fontSize: "11px", color: "#FFFFFF", fontWeight: "bold", textShadow: "1px 1px 0 #0A246A" }}>
-            Ayanokoji — Web Developer
+            John Paul  — Web Developer
           </span>
         </div>
         {/* Window controls */}
@@ -151,7 +151,7 @@ function MacNav() {
             alignItems: "center",
           }}
         >
-          Ayanokoji
+          John Paul
         </div>
 
         {NAV_ITEMS.map((item) => (
@@ -218,7 +218,7 @@ function CRTNavInner() {
           style={{ fontFamily: "VT323, monospace", fontSize: "1.6rem" }}
         >
           <span style={{ color: "var(--crt-brown-bright)" }}>▶</span>
-         Ayanokoji
+         John Paul 
         </a>
 
         <div className="hidden md:flex items-center gap-6 text-xs tracking-widest">

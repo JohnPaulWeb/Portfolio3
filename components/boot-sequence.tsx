@@ -3,14 +3,14 @@
 import { useState, useEffect } from "react"
 
 const BOOT_LINES = [
-  "MY PORTFOLIO — Ayanokoji",
+  "MY PORTFOLIO — John Paul",
   "RAM CHECK... 640K OK",
   "LOADING DESIGN MODULES...",
   "PRODUCT_DESIGN.EXE ........ OK",
   "FIGMA.EXE ................. OK",
   "FRAMER.EXE ................ OK",
   "SIGNAL ACQUIRED [ ████████████ ] 100%",
-  "WELCOME — Ayanokoji — WEB DEVELOPER",
+  "WELCOME — John Paul — WEB DEVELOPER",
   "> SYSTEM READY_",
 ]
 
@@ -71,7 +71,7 @@ export function BootSequence({ onComplete }: BootSequenceProps) {
             className="text-5xl glow"
             style={{ fontFamily: "VT323, monospace", letterSpacing: "0.1em" }}
           >
-            Ayanokoji
+            John Paul
           </div>
           <div className="text-xs glow-dim mt-1 tracking-widest">
             FREELANCE - Web Developer

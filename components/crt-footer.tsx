@@ -48,10 +48,10 @@ export function CRTFooter() {
             <div className="text-xs tracking-widest glow-dim mb-4">FIND ME</div>
             <div className="space-y-2 text-xs" style={{ color: "var(--crt-brown)" }}>
               {[
-                { label: "TWITTER", href: "https://twitter.com/yadwinder_s" },
-                { label: "DRIBBBLE", href: "https://dribbble.com/yadwinder" },
-                { label: "LINKEDIN", href: "https://linkedin.com/in/yadwinder" },
-                { label: "GITHUB", href: "https://github.com/yadwinder" },
+                { label: "TWITTER", href: "https://x.com/YudoIssei5846" },
+                { label: "Vercel", href: "https://vercel.com/isseiyudos-projects" },
+                { label: "LINKEDIN", href: "https://www.linkedin.com/in/john-paul-braganza-683ab932a/?skipRedirect=true" },
+                { label: "GITHUB", href: "https://github.com/JohnPaulWeb?tab=repositories" },
               ].map(({ label, href }) => (
                 <div key={label}>
                   <a href={href} target="_blank" rel="noopener noreferrer" className="hover:glow-sm transition-all">
@@ -71,7 +71,7 @@ export function CRTFooter() {
             color: "var(--crt-brown-dim)",
           }}
         >
-          <div>© John Paul A. Braganza— ALL RIGHTS RESERVED</div>
+          <div>© John Paul A. Braganza — ALL RIGHTS RESERVED</div>
           <div className="flex items-center gap-2">
             <span
               className="inline-block w-1.5 h-1.5 rounded-full"

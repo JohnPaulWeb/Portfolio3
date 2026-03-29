@@ -42,7 +42,7 @@ export function CRTAbout() {
               $ cat bio.txt
             </div>
             <p>
-             I am John Paul A. Braganza a Freelancer at the of 17 years old, with a passion for crafting visually stunning and user-centric digital experiences. With a keen eye for detail and a commitment to excellence, I specialize in creating intuitive interfaces that seamlessly blend aesthetics with functionality.
+             I am John Paul A. Braganza a Freelancer at the age of 17 years old, with a passion for crafting visually stunning and user-centric digital experiences. With a keen eye for detail and a commitment to excellence, I specialize in creating intuitive interfaces that seamlessly blend aesthetics with functionality.
             </p>
             <p>
               I collaborate closely with clients to understand their unique needs and translate them into compelling designs that resonate with their target audience. My expertise spans across various design tools and methodologies, allowing me to deliver innovative solutions that drive engagement and elevate brand presence.

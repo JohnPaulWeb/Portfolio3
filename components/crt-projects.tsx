@@ -5,34 +5,34 @@ import { useState } from "react"
 
 const WORKS = [
   {
-    id: "WRK_001",
+    id: "WORK_001",
     title: "Mangaldan National High School",
     category: "WEBAPP — 2025",
     year: "2025",
-    desc: "A minimalist shopping experience designed for easy discovery and quick checkout. Clean flows, intuitive browsing, frictionless purchase.",
+    desc: "Mangaldan National High School's website is a comprehensive online platform designed to provide students, parents, and staff with easy access to information about the school. The website features sections for news and announcements, academic programs, faculty and staff directories, event calendars, and resources for students. With a user-friendly interface and responsive design, the Mangaldan National High School website aims to enhance communication and engagement within the school community while showcasing the school's achievements and offerings.",
     tags: ["Frontend", "Html, CSS, JS", "FIGMA"],
     img: "/works/john.png",
-    type: "webapp",
+    type: "Landing Page",
   },
   {
-    id: "WRK_002",
+    id: "WORK_002",
     title: "Snake Game",
     category: "LANDING — 2025",
     year: "2025",
-    desc: "Sleek, futuristic interface with dark theme aesthetics, playful gradients, and smooth micro-interactions — balancing minimalism with personality to showcase an AI agent playground.",
+    desc: "Snake Game is a classic arcade game where players control a snake to eat food and grow longer while avoiding collisions with walls and itself. The game features simple controls, retro graphics, and addictive gameplay that challenges players to achieve high scores as the snake grows longer and the game speeds up.",
     tags: ["LANDING PAGE", "Html, CSS, JS", "PURE WEB"],
     img: "/works/snake.png",
-    type: "landing",
+    type: "Game",
   },
   {
-    id: "WRK_003",
+    id: "WORK_003",
     title: "Riverside Web",
     category: "DASHBOARD — 2025",
     year: "2025",
-    desc: "Complex billing, scheduling, and customer data translated into a clear, accessible, and efficient UI — simplifying core operational workflows for a growing business.",
+    desc: "This is Web design for Riverside Web, a platform that provides high-quality audio and video recording solutions for podcasters, musicians, and content creators. The design focuses on a clean and intuitive user interface that allows users to easily navigate through the platform's features, such as recording, editing, and publishing their content. With a modern aesthetic and user-friendly layout, the Riverside Web design aims to enhance the overall user experience and make it easier for creators to produce professional-grade content.",
     tags: ["LANDING PAGE", "HTML, CSS, JS", "FIGMA"],
     img: "/works/riverside.png",
-    type: "dashboard",
+    type: "Landing Page",
   },
 ]
 

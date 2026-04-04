@@ -111,8 +111,7 @@ export function CRTHero() {
               <span className="glow-sm">whoami</span>
             </div>
             <div style={{ color: "var(--crt-brown)" }}>
-              I work with early-stage startups and ambitious founders to bring clarity and craft into their ideas — building products their users are going to love.
-            </div>
+              I am Freelancer been 3 years, i build apps and Website i really like coding and creating some games like roblox my hobby is to play chess   
             <div className="mt-3">
               <span style={{ color: "var(--crt-brown-dim)" }}>$</span>{" "}
               <span className="glow-sm">cat ./approach.txt</span>

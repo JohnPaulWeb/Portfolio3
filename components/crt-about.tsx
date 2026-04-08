@@ -1,10 +1,10 @@
 "use client"
 
 const STATS = [
-  { label: "PROJECTS COMPLETED", value: "50+", unit: "TOTAL" },
+  { label: "PROJECTS COMPLETED", value: "90+", unit: "TOTAL" },
   { label: "YEARS EXPERIENCE", value: "4+", unit: "YEARS" },
   { label: "STARTUPS WORKED WITH", value: "20+", unit: "CLIENTS" },
-  { label: "HAPPY FOUNDERS", value: "★★★★★", unit: "RATING" },
+  { label: "COLLABORATING", value: "★★★★★", unit: "RATING" },
 ]
 
 const TOOLS = [
@@ -45,7 +45,7 @@ export function CRTAbout() {
              I am John Paul A. Braganza a Freelancer at the age of 17 years old, with a passion for crafting visually stunning and user-centric digital experiences. With a keen eye for detail and a commitment to excellence, I specialize in creating intuitive interfaces that seamlessly blend aesthetics with functionality.
             </p>
             <p>
-              I collaborate closely with clients to understand their unique needs and translate them into compelling designs that resonate with their target audience. My expertise spans across various design tools and methodologies, allowing me to deliver innovative solutions that drive engagement and elevate brand presence.
+              I collaborate closely with my friends and clients to understand their unique needs and translate them into compelling designs that resonate with their target audience. My expertise spans across various design tools and methodologies, allowing me to deliver innovative solutions that drive engagement and elevate brand presence.
             </p>
             <p style={{ color: "var(--crt-brown-dim)" }}>
               I like to create website and apps and games that are not only visually appealing but also provide an exceptional user experience. I am always eager to take on new challenges and push the boundaries of design to create impactful digital products.
@@ -59,7 +59,7 @@ export function CRTAbout() {
                   className="inline-block w-1.5 h-1.5 rounded-full"
                   style={{ background: "var(--crt-amber)", boxShadow: "0 0 6px var(--crt-amber)", animation: "blink 2s step-start infinite" }}
                 />
-                AVAILABLE FOR FEBRUARY — SEND YOUR PROJECT IDEA
+                AVAILABLE FOR SUMMER — SEND YOUR PROJECT IDEA
               </span>
             </div>
           </div>

@@ -4,12 +4,12 @@ import { useEffect, useState } from "react"
 
 const TICKER_ITEMS = [
   "▶ AVAILABLE FOR NEW PROJECTS — 2026",
-  "◆ PRODUCT DESIGN  UX  UI  PROTOTYPING  INTERACTION",
-  "▶ WORKING WITH EARLY-STAGE STARTUPS & AMBITIOUS FOUNDERS",
+  "◆ FULL-STACK WEB DEVELOPER BLOCKCHAIN DEVELOPER",
+  "▶ FREELANCING BUILDING WEB APPS AND SYSTEM",
   "◆ CURRENTLY: HELPING FOUNDERS BUILD WORLD-CLASS PRODUCTS",
   "▶ MOVE FAST. ITERATE. PIXEL-PERFECT.",
-  "◆ RECENT: AGORA  SKYAGENT  BRILLIANCE",
-  "▶ SEND YOUR PROJECT IDEA — Ayanokoji",
+  "◆ RECENT: GOGORA SYSTEM",
+  "▶ SEND YOUR PROJECT IDEA — John Paul",
   "◆ SIGNAL STRENGTH: 100%",
 ]
 
@@ -53,7 +53,7 @@ export function CRTHero() {
       style={{ background: "var(--crt-bg)" }}
     >
       {/* Big title */}
-      <div className="text-center relative z-10 w-full max-w-4xl mx-auto">
+      <div className="text-center relative z-10 w-full max-w-4xl mx-auto"></div>
         {/* System prompt line */}
         <div className="text-xs tracking-[0.3em] mb-6 glow-dim">
           C:\PORTFOLIO\&gt; LOADING_John Paul{dots}
@@ -69,7 +69,7 @@ export function CRTHero() {
             color: "var(--crt-brown-bright)",
           }}
         >
-          John Paul
+          John Paul A.
         </h1>
         <h1
           className="glow flicker leading-none mb-4"

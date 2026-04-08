@@ -29,7 +29,7 @@ const WORKS = [
     title: "Riverside Web",
     category: "DASHBOARD — 2025",
     year: "2025",
-    desc: "This is Web design for Riverside Web, a platform that provides high-quality audio and video recording solutions for podcasters, musicians, and content creators. The design focuses on a clean and intuitive user interface that allows users to easily navigate through the platform's features, such as recording, editing, and publishing their content. With a modern aesthetic and user-friendly layout, the Riverside Web design aims to enhance the overall user experience and make it easier for creators to produce professional-grade content.",
+    desc: "This is Web design for Riverside Web, a simple Landing Page ",
     tags: ["LANDING PAGE", "HTML, CSS, JS", "FIGMA"],
     img: "/works/riverside.png",
     type: "Landing Page",

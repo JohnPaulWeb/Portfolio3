@@ -6,16 +6,16 @@ export function CRTFooter() {
     >
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {/* Brand */}
+          {/* Brand  */}
           <div>
             <div
               className="glow text-3xl mb-2"
               style={{ fontFamily: "VT323, monospace" }}
             >
-              Ayanokoji.COM
+              JOHN PAUL A. BRAGANZA
             </div>
             <div className="text-xs glow-dim tracking-widest mb-4">
-              FREELANCE PRODUCT DESIGNER
+              FREELANCE WEB DEVELOPER
             </div>
             <div className="text-xs" style={{ color: "var(--crt-brown-dim)" }}>
               Helping founders build world-class products<br />

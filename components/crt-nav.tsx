@@ -75,7 +75,7 @@ function XPNav() {
               padding: "2px 8px",
               color: "#000",
               background: active === item.label ? "#316AC5" : "transparent",
-              color2: active === item.label ? "#FFF" : "#000",
+              color: active === item.label ? "#FFF" : "#000",
               color: active === item.label ? "#FFF" : "#000",
               textDecoration: "none",
               display: "inline-block",

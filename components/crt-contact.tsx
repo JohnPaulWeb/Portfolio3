@@ -15,7 +15,7 @@ const STATUS_BARS = [
   { name: "AVAILABILITY", val: 100 },
   { name: "CREATIVE ENERGY", val: 96 },
   { name: "COFFEE LEVEL", val: 85 },
-  { name: "INBOX", val: 70 },
+  { name: "FREELANCING", val: 70 },
 ]
 
 export function CRTContact() {

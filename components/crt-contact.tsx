@@ -5,11 +5,11 @@ import { useState } from "react"
 const INFO_ROWS = [
   { k: "WEBSITE", v: "https://vercel.com/isseiyudos-projects" },
   { k: "TWITTER", v: "@isseiyudo" },
-  { k: "DRIBBBLE", v: "dribbble.com/ayanokoji" },
-  { k: "LINKEDIN", v: "linkedin.com/in/john-paul" },
+  { k: "LINKEDIN", v: "https://www.linkedin.com/in/john-paul-braganza-683ab932a/" },
   { k: "GITHUB", v: "github.com/JohnPaulWeb" },
   { k: "AVAILABILITY", v: "Available from February" },
 ]
+
 
 const STATUS_BARS = [
   { name: "AVAILABILITY", val: 100 },

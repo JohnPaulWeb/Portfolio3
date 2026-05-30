@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 
+// this is my account 
 const INFO_ROWS = [
   { k: "WEBSITE", v: "https://vercel.com/isseiyudos-projects" },
   { k: "TWITTER", v: "@isseiyudo" },

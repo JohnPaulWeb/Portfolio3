@@ -55,6 +55,7 @@ export function ThemeTransition() {
   )
 }
 
+// ito yung theme switcher component na nasa bottom right
 const THEMES: { id: Theme; label: string; icon: string; desc: string }[] = [
   { id: "crt",  label: "CRT",     icon: "█", desc: "Phosphor CRT Terminal" },
   { id: "xp",   label: "WIN XP",  icon: "⊞", desc: "Windows XP Luna" },

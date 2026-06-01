@@ -96,6 +96,8 @@ export function CRTProjects() {
   )
 }
 
+
+// Individual work card component
 function WorkCard({ work }: { work: (typeof WORKS)[0] }) {
   const [hovered, setHovered] = useState(false)
 
@@ -156,7 +158,7 @@ function WorkCard({ work }: { work: (typeof WORKS)[0] }) {
         </div>
       </div>
 
-      {/* Card footer */}
+      {/* ito yung Card Footer  */}
       <div
         className="flex items-center justify-between px-5 py-4"
         style={{ borderTop: "1px solid var(--crt-border-col)" }}

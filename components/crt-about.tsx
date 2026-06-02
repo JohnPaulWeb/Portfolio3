@@ -1,19 +1,19 @@
 "use client"
 
 const STATS = [
-  { label: "PROJECTS COMPLETED", value: "90+", unit: "TOTAL" },
-  { label: "YEARS EXPERIENCE", value: "4+", unit: "YEARS" },
-  { label: "STARTUPS WORKED WITH", value: "20+", unit: "CLIENTS" },
-  { label: "COLLABORATING", value: "★★★★★", unit: "RATING" },
+  { label: "PROJECTS COMPLETED", value: "45+", unit: "TOTAL" },
+  { label: "YEARS FREELANCING", value: "3+", unit: "YEARS" },
+  { label: "GAME SCRIPTS WRITTEN", value: "100+", unit: "SCRIPTS" },
+  { label: "CHESS ELO ESTIMATE", value: "1500+", unit: "ELO" },
 ]
 
 const TOOLS = [
-  { name: "FIGMA", role: "UI / UX / PROTOTYPING", status: "ACTIVE" },
-  { name: "FRAMER", role: "WEB DESIGN + MOTION", status: "ACTIVE" },
-  { name: "NOTION", role: "RESEARCH + DOCS", status: "ACTIVE" },
-  { name: "LOTTIE", role: "MICRO-INTERACTIONS", status: "ACTIVE" },
-  { name: "WEBFLOW", role: "NO-CODE WEB", status: "ACTIVE" },
-  { name: "VS CODE", role: "FRONT-END DEV", status: "IDLE" },
+  { name: "NEXT.JS / REACT", role: "FULL-STACK WEB APPS", status: "ACTIVE" },
+  { name: "SOLIDITY / ETHERS", role: "SMART CONTRACTS / DAPPS", status: "ACTIVE" },
+  { name: "NODE.JS / EXPRESS", role: "APIS & BACKEND SERVICES", status: "ACTIVE" },
+  { name: "TAILWIND CSS", role: "RESPONSIVE LAYOUTS & DESIGN", status: "ACTIVE" },
+  { name: "ROBLOX STUDIO / LUA", role: "MULTIPLAYER GAME SCRIPTING", status: "ACTIVE" },
+  { name: "VS CODE & GIT", role: "PRIMARY WORKSPACE & CONTROL", status: "ACTIVE" },
 ]
 
 export function CRTAbout() {
@@ -42,13 +42,13 @@ export function CRTAbout() {
               $ cat bio.txt
             </div>
             <p>
-             I am John Paul A. Braganza a Freelancer at the age of 17 years old, with a passion for crafting visually stunning and user-centric digital experiences. With a keen eye for detail and a commitment to excellence, I specialize in creating intuitive interfaces that seamlessly blend aesthetics with functionality.
+              I am John Paul A. Braganza, a 17-year-old freelance developer with a deep passion for writing clean, efficient, and visual code. For the past 3 years, I have specialized in building robust full-stack applications, interactive frontends, and decentralized web3 systems.
             </p>
             <p>
-              I collaborate closely with my friends and clients to understand their unique needs and translate them into compelling designs that resonate with their target audience. My expertise spans across various design tools and methodologies, allowing me to deliver innovative solutions that drive engagement and elevate brand presence.
+              I love engineering systems that solve real-world problems. My stack includes React/Next.js for interfaces, Node.js for backend services, Solidity for smart contracts, and Tailwind CSS for styling. I enjoy creating pixel-perfect user interfaces that are fast, accessible, and delight users.
             </p>
             <p style={{ color: "var(--crt-brown-dim)" }}>
-              I like to create website and apps and games that are not only visually appealing but also provide an exceptional user experience. I am always eager to take on new challenges and push the boundaries of design to create impactful digital products.
+              When I'm not coding web applications or smart contracts, I script interactive gaming experiences in Roblox Studio using Lua, or play chess to sharpen my logical problem-solving and algorithmic thinking. I am always excited to learn new frameworks and build systems that stand out.
             </p>
             <div className="pt-3" style={{ borderTop: "1px solid var(--crt-border-col)" }}>
               <span

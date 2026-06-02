@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Ayanokoji - Web Developer',
-  description: 'Freelance Product Designer helping early-stage startups build world-class products through clarity, craft, and pixel-perfect design.',
+  title: 'John Paul A. Braganza - Full-Stack & Blockchain Developer',
+  description: 'Freelance Full-Stack & Blockchain Developer building high-performance web applications, retro games, and decentralized systems.',
 }
 
 export default function RootLayout({

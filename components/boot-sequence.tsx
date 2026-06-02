@@ -3,15 +3,18 @@
 import { useState, useEffect } from "react"
 
 const BOOT_LINES = [
-  "MY PORTFOLIO — John Paul",
-  "RAM CHECK... 640K OK",
-  "LOADING DESIGN MODULES...",
-  "PRODUCT_DESIGN.EXE ........ OK",
-  "FIGMA.EXE ................. OK",
-  "FRAMER.EXE ................ OK",
-  "SIGNAL ACQUIRED [ ████████████ ] 100%",
-  "WELCOME — John Paul — WEB DEVELOPER",
-  "> SYSTEM READY_",
+  "SYSTEM_PORTFOLIO v1.0.4 — John Paul A. Braganza",
+  "MEMORY CHECK: 640K BASE RAM OK",
+  "LOADING KERNEL INTERFACES...",
+  "NEXTJS.SYS ................ OK",
+  "REACT_CORE.SYS ............ OK",
+  "SOLIDITY_VM.SYS ........... OK",
+  "ROBLOX_API.SYS ............ OK",
+  "CHESS_ENGINE.SYS .......... OK",
+  "ESTABLISHING SECURE CONNECTION...",
+  "SIGNAL STRENGTH [ ████████████ ] 100%",
+  "WELCOME — John Paul — FULL-STACK & BLOCKCHAIN DEVELOPER",
+  "> BOOT COMPLETE. RUNNING PORTFOLIO.EXE_",
 ]
 
 interface BootSequenceProps {
@@ -37,14 +40,14 @@ export function BootSequence({ onComplete }: BootSequenceProps) {
     if (displayedChars < line.length) {
       const timeout = setTimeout(() => {
         setDisplayedChars((c) => c + 1)
-      }, 18)
+      }, 5)
       return () => clearTimeout(timeout)
     } else {
       const timeout = setTimeout(() => {
         setLines((prev) => [...prev, line])
         setCurrentLine((l) => l + 1)
         setDisplayedChars(0)
-      }, 80)
+      }, 25)
       return () => clearTimeout(timeout)
     }
   }, [currentLine, displayedChars, onComplete])
@@ -74,7 +77,7 @@ export function BootSequence({ onComplete }: BootSequenceProps) {
             John Paul
           </div>
           <div className="text-xs glow-dim mt-1 tracking-widest">
-            FREELANCE - Web Developer
+            FREELANCE - Full-Stack & Blockchain Developer
           </div>
         </div>
 

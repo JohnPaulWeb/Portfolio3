@@ -53,7 +53,7 @@ export function CRTHero() {
       style={{ background: "var(--crt-bg)" }}
     >
       {/* Big title */}
-      <div className="text-center relative z-10 w-full max-w-4xl mx-auto"></div>
+      <div className="text-center relative z-10 w-full max-w-4xl mx-auto">
         {/* System prompt line */}
         <div className="text-xs tracking-[0.3em] mb-6 glow-dim">
           C:\PORTFOLIO\&gt; LOADING_John Paul{dots}
@@ -93,11 +93,11 @@ export function CRTHero() {
             letterSpacing: "0.2em",
           }}
         >
-          FREELANCE Web Developer
+          Full-Stack & Blockchain Developer
         </div>
 
         <div className="text-xs tracking-widest glow-dim mb-12">
-          ◆ HELPING STARTUPS BUILD WORLD-CLASS PRODUCTS — AVAILABLE NOW ◆
+          ◆ HELPING CLIENTS BUILD WORLD-CLASS WEB & BLOCKCHAIN PRODUCTS ◆
         </div>
 
         {/* Terminal box */}
@@ -111,7 +111,8 @@ export function CRTHero() {
               <span className="glow-sm">whoami</span>
             </div>
             <div style={{ color: "var(--crt-brown)" }}>
-              I am Freelancer been 3 years, i build apps and Website i really like coding and creating some games like roblox my hobby is to play chess   
+              I am a freelance developer with 3 years of experience building high-performance web applications and custom systems. I specialize in coding clean, modern websites, developing decentralized blockchain applications, and programming retro games. My favorite hobby outside coding is playing chess.
+            </div>
             <div className="mt-3">
               <span style={{ color: "var(--crt-brown-dim)" }}>$</span>{" "}
               <span className="glow-sm">cat ./approach.txt</span>
@@ -119,7 +120,7 @@ export function CRTHero() {
             <div style={{ color: "var(--crt-brown-dim)" }} className="pl-4 space-y-0.5">
               <div>MOVE_FAST/</div>
               <div>ITERATE_TIL_CLARITY/</div>
-              <div>PIXEL_PERFECT/</div>
+              <div>DECENTRALIZED_BY_DEFAULT/</div>
             </div>
             <div className="mt-2">
               <span style={{ color: "var(--crt-brown-dim)" }}>$</span>{" "}

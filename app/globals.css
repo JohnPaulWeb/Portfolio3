@@ -53,15 +53,41 @@
   --font-ui: 'Geneva', 'Charcoal', 'Chicago', 'Arial', sans-serif;
 }
 
-/* XP: kill CRT effects */
+/* ============================================================
+   PRO THEME  [data-theme="pro"]
+   Dark & Sleek — deep navy/charcoal with electric blue/cyan accents
+   ============================================================ */
+[data-theme="pro"] {
+  --crt-bg:           #0D1117;
+  --crt-paper:        #161B22;
+  --crt-brown:        #E6EDF3;
+  --crt-brown-dim:    #8B949E;
+  --crt-brown-bright: #58A6FF;
+  --crt-amber:        #00D2FF;
+  --crt-amber-dim:    #3A9FDE;
+  --crt-scanline:     transparent;
+  --crt-glow:         0 0 8px #58A6FF99, 0 0 20px #00D2FF44;
+  --crt-glow-sm:      0 0 4px #58A6FF88, 0 0 12px #00D2FF33;
+  --crt-border-col:   #30363D;
+  --pro-accent:       #58A6FF;
+  --pro-accent-dim:   #1F6FEB;
+  --pro-cyan:         #00D2FF;
+  --pro-surface:      #21262D;
+  --pro-surface-hi:   #2D333B;
+  --font-ui: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* XP / MAC / PRO: kill CRT effects */
 [data-theme="xp"] .crt-scanlines::before,
 [data-theme="xp"] .crt-vignette::after,
 [data-theme="mac"] .crt-scanlines::before,
-[data-theme="mac"] .crt-vignette::after {
+[data-theme="mac"] .crt-vignette::after,
+[data-theme="pro"] .crt-scanlines::before,
+[data-theme="pro"] .crt-vignette::after {
   display: none;
 }
 
-/* XP: no glow, no flicker */
+/* XP / MAC: plain glow (no CRT glow) */
 [data-theme="xp"] .glow,
 [data-theme="mac"] .glow {
   text-shadow: none;
@@ -76,6 +102,22 @@
 }
 [data-theme="xp"] .flicker,
 [data-theme="mac"] .flicker {
+  animation: none;
+}
+
+/* PRO: cyan electric glow, no flicker */
+[data-theme="pro"] .glow {
+  text-shadow: 0 0 8px #58A6FFaa, 0 0 24px #00D2FF55;
+  color: var(--crt-amber);
+}
+[data-theme="pro"] .glow-sm {
+  text-shadow: 0 0 5px #58A6FF99, 0 0 14px #00D2FF44;
+}
+[data-theme="pro"] .glow-dim {
+  text-shadow: none;
+  color: var(--crt-brown-dim);
+}
+[data-theme="pro"] .flicker {
   animation: none;
 }
 
@@ -95,6 +137,35 @@
 [data-theme="mac"] * {
   font-family: 'Geneva', 'Charcoal', 'Arial', sans-serif !important;
   letter-spacing: 0 !important;
+}
+
+/* PRO: use Inter / system-ui — modern sans */
+[data-theme="pro"] body,
+[data-theme="pro"] * {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif !important;
+  letter-spacing: normal !important;
+}
+[data-theme="pro"] h1,
+[data-theme="pro"] h2,
+[data-theme="pro"] h3 {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+}
+
+/* PRO: scrollbar styling */
+[data-theme="pro"] ::-webkit-scrollbar {
+  width: 6px;
+  background: #161B22;
+}
+[data-theme="pro"] ::-webkit-scrollbar-thumb {
+  background: #30363D;
+  border-radius: 3px;
+}
+
+/* PRO: selection styling */
+[data-theme="pro"] ::selection {
+  background-color: #1F6FEB;
+  color: #E6EDF3;
 }
 
 /* ============================================================

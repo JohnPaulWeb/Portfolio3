@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useCallback, type ReactNode } from "react"
 
-export type Theme = "crt" | "xp" | "mac"
+export type Theme = "crt" | "xp" | "mac" | "pro"
 
 interface ThemeContextValue {
   theme: Theme

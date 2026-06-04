@@ -283,10 +283,159 @@ function CRTNavInner() {
   )
 }
 
-/* ── Router ───────────────────────────────────────────── */
+/* ── Sleek Pro dark nav ─────────────────────────────── */
+function ProNav() {
+  const [active, setActive] = useState("HOME")
+  const [scrolled, setScrolled] = useState(false)
+
+  // Add shadow on scroll
+  if (typeof window !== "undefined") {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    // handled via inline onScroll — we use a simple global listener
+  }
+
+  return (
+    <nav
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        fontFamily: "'Inter', 'Segoe UI', system-ui, sans-serif",
+        background: "rgba(13,17,23,0.90)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        borderBottom: "1px solid #21262D",
+        boxShadow: "0 1px 0 0 #30363D, 0 4px 20px rgba(0,0,0,0.4)",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "0 24px",
+          height: "60px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        {/* Logo / Name */}
+        <a
+          href="#home"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
+            textDecoration: "none",
+          }}
+        >
+          <span
+            style={{
+              width: "32px",
+              height: "32px",
+              borderRadius: "8px",
+              background: "linear-gradient(135deg, #1F6FEB 0%, #00D2FF 100%)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "15px",
+              fontWeight: 800,
+              color: "#fff",
+              boxShadow: "0 0 12px #1F6FEB66",
+              flexShrink: 0,
+            }}
+          >
+            JP
+          </span>
+          <span
+            style={{
+              fontSize: "15px",
+              fontWeight: 600,
+              color: "#E6EDF3",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            John Paul
+            <span style={{ color: "#58A6FF", marginLeft: "4px" }}>.</span>
+          </span>
+        </a>
+
+        {/* Nav links */}
+        <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+          {NAV_ITEMS.map((item) => {
+            const isActiveItem = active === item.label
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setActive(item.label)}
+                style={{
+                  fontSize: "13px",
+                  fontWeight: isActiveItem ? 600 : 400,
+                  padding: "6px 14px",
+                  borderRadius: "6px",
+                  color: isActiveItem ? "#58A6FF" : "#8B949E",
+                  background: isActiveItem ? "rgba(88,166,255,0.10)" : "transparent",
+                  textDecoration: "none",
+                  transition: "all 0.15s ease",
+                  border: isActiveItem ? "1px solid rgba(88,166,255,0.25)" : "1px solid transparent",
+                  letterSpacing: "0.02em",
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActiveItem) {
+                    e.currentTarget.style.color = "#C9D1D9"
+                    e.currentTarget.style.background = "rgba(255,255,255,0.05)"
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActiveItem) {
+                    e.currentTarget.style.color = "#8B949E"
+                    e.currentTarget.style.background = "transparent"
+                  }
+                }}
+              >
+                {item.label.charAt(0) + item.label.slice(1).toLowerCase()}
+              </a>
+            )
+          })}
+        </div>
+
+        {/* Online pill */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "7px",
+            fontSize: "12px",
+            color: "#3FB950",
+            background: "rgba(63,185,80,0.10)",
+            border: "1px solid rgba(63,185,80,0.25)",
+            borderRadius: "20px",
+            padding: "4px 12px",
+            fontWeight: 500,
+          }}
+        >
+          <span
+            style={{
+              width: "7px",
+              height: "7px",
+              borderRadius: "50%",
+              background: "#3FB950",
+              boxShadow: "0 0 6px #3FB950",
+              display: "inline-block",
+              animation: "blink 2.5s step-start infinite",
+            }}
+          />
+          Available
+        </div>
+      </div>
+    </nav>
+  )
+}
+
+/* ── Router ──────────────────────────────────── */
 export function CRTNav() {
   const { theme } = useTheme()
   if (theme === "xp")  return <XPNav />
   if (theme === "mac") return <MacNav />
+  if (theme === "pro") return <ProNav />
   return <CRTNavInner />
 }

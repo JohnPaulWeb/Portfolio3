@@ -18,14 +18,14 @@ function SiteContent() {
   const [booted, setBooted] = useState(false)
   const { theme } = useTheme()
 
-  const navHeight = theme === "xp" ? "72px" : theme === "mac" ? "26px" : "52px"
+  const navHeight = theme === "xp" ? "72px" : theme === "mac" ? "26px" : theme === "pro" ? "60px" : "52px"
 
   return (
     <main
       className="min-h-screen"
       style={{
         background: "var(--crt-bg)",
-        animation: theme === "crt" ? "flicker 7s infinite" : "none",
+        animation: (theme === "crt") ? "flicker 7s infinite" : "none",
       }}
     >
       <CRTOverlay />

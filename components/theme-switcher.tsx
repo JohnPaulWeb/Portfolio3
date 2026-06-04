@@ -37,6 +37,7 @@ export function ThemeTransition() {
   const color =
     theme === "xp"  ? "#0A246A" :
     theme === "mac" ? "#888888" :
+    theme === "pro" ? "#0D1117" :
     "#4a2800"
 
   return (
@@ -57,9 +58,10 @@ export function ThemeTransition() {
 
 // ito yung theme switcher component na nasa bottom right
 const THEMES: { id: Theme; label: string; icon: string; desc: string }[] = [
-  { id: "crt",  label: "CRT",     icon: "█", desc: "Phosphor CRT Terminal" },
-  { id: "xp",   label: "WIN XP",  icon: "⊞", desc: "Windows XP Luna" },
-  { id: "mac",  label: "MAC OS",  icon: "⌘", desc: "Classic Mac OS 9" },
+  { id: "crt",  label: "CRT",     icon: "█",  desc: "Phosphor CRT Terminal" },
+  { id: "xp",   label: "WIN XP",  icon: "⊞",  desc: "Windows XP Luna" },
+  { id: "mac",  label: "MAC OS",  icon: "⌘",  desc: "Classic Mac OS 9" },
+  { id: "pro",  label: "PRO",     icon: "◈",  desc: "Dark & Sleek Professional" },
 ]
 
 export function ThemeSwitcher() {
@@ -149,6 +151,40 @@ export function ThemeSwitcher() {
               }}
             >
               {t.icon} {t.label}
+            </button>
+          )
+        }
+
+        /* ---- Pro button style ---- */
+        if (t.id === "pro") {
+          return (
+            <button
+              key={t.id}
+              onClick={() => !transitioning && setTheme(t.id)}
+              title={t.desc}
+              style={{
+                fontFamily: "'Inter', 'Segoe UI', system-ui, sans-serif",
+                fontSize: "11px",
+                fontWeight: isActive ? 600 : 400,
+                padding: "5px 10px 6px",
+                border: isActive
+                  ? "1px solid #58A6FF"
+                  : "1px solid #30363D",
+                background: isActive
+                  ? "linear-gradient(135deg, #1F6FEB22 0%, #0D1117 100%)"
+                  : "#161B22",
+                color: isActive ? "#58A6FF" : "#8B949E",
+                cursor: transitioning ? "wait" : "pointer",
+                minWidth: "80px",
+                letterSpacing: "0.05em",
+                borderRadius: "6px",
+                boxShadow: isActive
+                  ? "0 0 10px #58A6FF44, inset 0 0 8px #58A6FF11"
+                  : "none",
+                transition: "all 0.15s ease",
+              }}
+            >
+              {t.icon} {t.label}{isActive ? " ✦" : ""}
             </button>
           )
         }

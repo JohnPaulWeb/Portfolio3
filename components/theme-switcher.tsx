@@ -214,3 +214,5 @@ export function ThemeSwitcher() {
     </div>
   )
 }
+
+// ito yung theme switcher component na nasa bottom right

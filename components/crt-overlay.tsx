@@ -7,6 +7,7 @@ export function CRTOverlay() {
   const noiseRef = useRef<HTMLCanvasElement>(null)
   const { theme } = useTheme()
 
+  // useEffect
   useEffect(() => {
     const canvas = noiseRef.current
     if (!canvas) return
@@ -59,6 +60,7 @@ export function CRTOverlay() {
         style={{ zIndex: 9997 }}
         aria-hidden="true"
       />
+      {/* canvass */}
       <canvas
         ref={noiseRef}
         className="fixed inset-0 pointer-events-none"

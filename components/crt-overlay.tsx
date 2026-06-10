@@ -55,6 +55,7 @@ export function CRTOverlay() {
 
   return (
     <>
+    {/* new to me for crt */}
       <div
         className="crt-scanlines crt-vignette fixed inset-0 pointer-events-none"
         style={{ zIndex: 9997 }}

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useTheme } from "@/lib/theme-context"
 
 // Custom SVG Piece renderer that matches the active theme dynamically
@@ -737,6 +737,9 @@ export function CRTChess() {
   const [log, setLog] = useState<string[]>(["Chess.exe initiated.", "White's turn (You)."])
   const [difficulty, setDifficulty] = useState<"easy" | "medium" | "hard">("medium")
   const [soundOn, setSoundOn] = useState<boolean>(true)
+  
+  // Track the last turn the AI was triggered for (prevents duplicate AI moves)
+  const aiTurnRef = useRef<"w" | "b" | null>(null)
 
   // Check game states (check, win, lose, draw)
   useEffect(() => {
@@ -928,8 +931,16 @@ export function CRTChess() {
 
   // Minimax Chess AI for Black
   useEffect(() => {
-    if (vsAI && turn === "b" && (gameState === "playing" || gameState === "check") && !aiThinking) {
+    // Only trigger AI once when turn changes to "b"
+    if (vsAI && turn === "b" && aiTurnRef.current !== "b" && (gameState === "playing" || gameState === "check")) {
+      aiTurnRef.current = "b"
       setAiThinking(true)
+      
+      // Use a ref to capture the current board state for the AI thinking
+      const boardSnapshot = board
+      const kingMovedSnapshot = { ...hasKingMoved }
+      const rookMovedSnapshot = { ...hasRookMoved }
+      
       const thinkingDelay = setTimeout(() => {
         const depthMap = { easy: 1, medium: 2, hard: 3 }
         const currentDepth = depthMap[difficulty]
@@ -940,9 +951,9 @@ export function CRTChess() {
           const allLegalMoves: { from: [number, number]; to: [number, number] }[] = []
           for (let r = 0; r < 8; r++) {
             for (let c = 0; c < 8; c++) {
-              const p = board[r][c]
+              const p = boardSnapshot[r][c]
               if (p && p[0] === "b") {
-                const legal = getLegalMoves(r, c, board, hasKingMoved, hasRookMoved)
+                const legal = getLegalMoves(r, c, boardSnapshot, kingMovedSnapshot, rookMovedSnapshot)
                 for (const [tr, tc] of legal) {
                   allLegalMoves.push({ from: [r, c], to: [tr, tc] })
                 }
@@ -955,7 +966,7 @@ export function CRTChess() {
         }
 
         if (!bestMove) {
-          bestMove = getBestMove(board, currentDepth, hasKingMoved, hasRookMoved)
+          bestMove = getBestMove(boardSnapshot, currentDepth, kingMovedSnapshot, rookMovedSnapshot)
         }
 
         if (bestMove) {
@@ -966,10 +977,16 @@ export function CRTChess() {
 
       return () => clearTimeout(thinkingDelay)
     }
-  }, [turn, board, vsAI, gameState, difficulty])
+    
+    // Reset ref when it's not Black's turn
+    if (turn !== "b") {
+      aiTurnRef.current = null
+    }
+  }, [turn, vsAI, gameState, difficulty])
 
   // Reset Game
   const resetGame = () => {
+    aiTurnRef.current = null
     setBoard(getInitialBoard())
     setSelectedSquare(null)
     setValidMoves([])
@@ -990,6 +1007,7 @@ export function CRTChess() {
     const targetIdx = history.length - step
     if (targetIdx >= 0) {
       const prev = history[targetIdx]
+      aiTurnRef.current = null
       setBoard(prev.board)
       setTurn(prev.turn)
       setHasKingMoved(prev.hasKingMoved)

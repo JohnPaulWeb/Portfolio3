@@ -738,8 +738,21 @@ export function CRTChess() {
   const [difficulty, setDifficulty] = useState<"easy" | "medium" | "hard">("medium")
   const [soundOn, setSoundOn] = useState<boolean>(true)
   
+  // Time controls
+  type TimeFormat = "bullet" | "blitz" | "rapid" | "classic"
+  const timeFormats: Record<TimeFormat, { minutes: number; label: string }> = {
+    bullet: { minutes: 1, label: "Bullet (1 min)" },
+    blitz: { minutes: 3, label: "Blitz (3 min)" },
+    rapid: { minutes: 10, label: "Rapid (10 min)" },
+    classic: { minutes: 30, label: "Classic (30 min)" }
+  }
+  const [timeFormat, setTimeFormat] = useState<TimeFormat>("rapid")
+  const [whiteTime, setWhiteTime] = useState<number>(timeFormats.rapid.minutes * 60)
+  const [blackTime, setBlackTime] = useState<number>(timeFormats.rapid.minutes * 60)
+  
   // Track the last turn the AI was triggered for (prevents duplicate AI moves)
   const aiTurnRef = useRef<"w" | "b" | null>(null)
+  const timerIntervalRef = useRef<NodeJS.Timeout | null>(null)
 
   // Check game states (check, win, lose, draw)
   useEffect(() => {
@@ -808,6 +821,50 @@ export function CRTChess() {
       }
     }
   }, [board, turn])
+
+  // Timer effect - counts down based on whose turn it is
+  useEffect(() => {
+    if (gameState === "win" || gameState === "loss" || gameState === "draw" || aiThinking) {
+      if (timerIntervalRef.current) {
+        clearInterval(timerIntervalRef.current)
+        timerIntervalRef.current = null
+      }
+      return
+    }
+
+    timerIntervalRef.current = setInterval(() => {
+      if (turn === "w") {
+        setWhiteTime((prev) => {
+          const newTime = prev - 1
+          if (newTime <= 0) {
+            setGameState("loss")
+            addToLog("System: Time's up! You lost.")
+            if (soundOn) playRetroSound("defeat")
+            return 0
+          }
+          return newTime
+        })
+      } else {
+        setBlackTime((prev) => {
+          const newTime = prev - 1
+          if (newTime <= 0) {
+            setGameState("win")
+            addToLog("System: CPU time expired! You win!")
+            if (soundOn) playRetroSound("victory")
+            return 0
+          }
+          return newTime
+        })
+      }
+    }, 1000)
+
+    return () => {
+      if (timerIntervalRef.current) {
+        clearInterval(timerIntervalRef.current)
+        timerIntervalRef.current = null
+      }
+    }
+  }, [turn, gameState, soundOn])
 
   const addToLog = (msg: string) => {
     setLog((prev) => [msg, ...prev].slice(0, 10))
@@ -931,6 +988,19 @@ export function CRTChess() {
 
   // Minimax Chess AI for Black
   useEffect(() => {
+    // Reset ref if it's not Black's turn or game is over
+    if (turn !== "b" || gameState === "win" || gameState === "loss" || gameState === "draw") {
+      aiTurnRef.current = null
+      return
+    }
+
+    // If it's Black's turn and a previous AI move exists, the game state changed
+    // This means we should clear the ref to allow the AI to respond to the new state
+    // (e.g., it's now in check, or a piece was captured)
+    if (aiTurnRef.current === "b" && (gameState === "check" || gameState === "playing")) {
+      aiTurnRef.current = null
+    }
+
     // Only trigger AI once when turn changes to "b"
     if (vsAI && turn === "b" && aiTurnRef.current !== "b" && (gameState === "playing" || gameState === "check")) {
       aiTurnRef.current = "b"
@@ -977,16 +1047,16 @@ export function CRTChess() {
 
       return () => clearTimeout(thinkingDelay)
     }
-    
-    // Reset ref when it's not Black's turn
-    if (turn !== "b") {
-      aiTurnRef.current = null
-    }
   }, [turn, vsAI, gameState, difficulty])
 
   // Reset Game
   const resetGame = () => {
+    if (timerIntervalRef.current) {
+      clearInterval(timerIntervalRef.current)
+      timerIntervalRef.current = null
+    }
     aiTurnRef.current = null
+    const initialSeconds = timeFormats[timeFormat].minutes * 60
     setBoard(getInitialBoard())
     setSelectedSquare(null)
     setValidMoves([])
@@ -995,7 +1065,9 @@ export function CRTChess() {
     setGameState("playing")
     setHasKingMoved({ w: false, b: false })
     setHasRookMoved({ wLeft: false, wRight: false, bLeft: false, bRight: false })
-    setLog(["Game restarted.", "White's turn (You)."])
+    setWhiteTime(initialSeconds)
+    setBlackTime(initialSeconds)
+    setLog(["Game restarted.", `Time format: ${timeFormats[timeFormat].label}`, "White's turn (You)."])
     if (soundOn) playRetroSound("select")
   }
 
@@ -1023,6 +1095,11 @@ export function CRTChess() {
 
   // Theme-specific UI Layout Rendering
   // ── CRT TERMINAL STYLING ──
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60)
+    const secs = seconds % 60
+    return `${mins}:${secs.toString().padStart(2, "0")}`
+  }
   const renderCRT = () => {
     const captured = getCapturedPieces(board)
 
@@ -1049,7 +1126,7 @@ export function CRTChess() {
           <div className="text-xs tracking-widest glow-dim">
             SYSTEM_EXEC: CHESS_ENGINE.SYS
           </div>
-          <div className="flex flex-wrap gap-4 text-xs">
+          <div className="flex flex-wrap gap-2 text-xs">
             <button onClick={resetGame} className="glow-sm hover:glow">[ RESTART ]</button>
             <button onClick={undoMove} disabled={history.length < 2} className="disabled:opacity-40 glow-sm hover:glow">[ UNDO ]</button>
             <button onClick={() => setSoundOn(!soundOn)} className="glow-sm hover:glow">
@@ -1065,6 +1142,22 @@ export function CRTChess() {
             >
               [ AI: {difficulty === "easy" ? "NOVICE" : difficulty === "medium" ? "CASUAL" : "DEEP_BLUE"} ]
             </button>
+            <div className="flex gap-1">
+              {(Object.entries(timeFormats) as [TimeFormat, { minutes: number; label: string }][]).map(([format, { label }]) => (
+                <button
+                  key={format}
+                  onClick={() => {
+                    setTimeFormat(format)
+                    const secs = timeFormats[format].minutes * 60
+                    setWhiteTime(secs)
+                    setBlackTime(secs)
+                  }}
+                  className={`glow-sm hover:glow text-[10px] ${timeFormat === format ? "glow" : ""}`}
+                >
+                  [ {format.toUpperCase()} ]
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -1073,7 +1166,12 @@ export function CRTChess() {
           <div className="lg:col-span-7 flex flex-col items-center">
             {/* CPU Header & Captured White Pieces */}
             <div className="w-full max-w-[28rem] md:max-w-[32rem] flex items-center justify-between text-xs mb-2 px-1">
-              <span className="glow-sm font-semibold opacity-75">◆ CPU (BLACK) {aiThinking && " [PLANNING...]"}</span>
+              <div className="flex items-center gap-2">
+                <span className="glow-sm font-semibold opacity-75">◆ CPU (BLACK) {aiThinking && " [PLANNING...]"}</span>
+                <span className="glow-sm font-mono text-xs" style={{ color: blackTime <= 10 ? "var(--crt-amber)" : "inherit" }}>
+                  ⏱ {formatTime(blackTime)}
+                </span>
+              </div>
               {renderCapturedPieces(captured.w, "w")}
             </div>
 
@@ -1165,7 +1263,12 @@ export function CRTChess() {
 
             {/* Player Header & Captured Black Pieces */}
             <div className="w-full max-w-[28rem] md:max-w-[32rem] flex items-center justify-between text-xs mt-2 px-1">
-              <span className="glow-sm font-semibold opacity-75">◆ YOU (WHITE) {turn === "w" && " [YOUR TURN]"}</span>
+              <div className="flex items-center gap-2">
+                <span className="glow-sm font-semibold opacity-75">◆ YOU (WHITE) {turn === "w" && " [YOUR TURN]"}</span>
+                <span className="glow-sm font-mono text-xs" style={{ color: whiteTime <= 10 ? "var(--crt-amber)" : "inherit" }}>
+                  ⏱ {formatTime(whiteTime)}
+                </span>
+              </div>
               {renderCapturedPieces(captured.b, "b")}
             </div>
           </div>
@@ -1304,6 +1407,27 @@ export function CRTChess() {
               <div onClick={() => setDifficulty("hard")} className={`px-3 py-1 hover:bg-[#316AC5] hover:text-white cursor-pointer ${difficulty === "hard" ? "bg-[#316AC5] text-white font-bold" : ""}`}>Deep Blue</div>
             </div>
           </div>
+          <div className="cursor-pointer hover:bg-[#316AC5] hover:text-white px-2 rounded-sm relative group flex items-center gap-1">
+            <span>Time:</span>
+            <span className="font-bold underline uppercase">{timeFormats[timeFormat].label}</span>
+            {/* Time format dropdown */}
+            <div className="hidden group-hover:flex flex-col absolute left-0 top-full bg-[#ECE9D8] border-2 border-[#ACA899] shadow-md py-1 z-30 min-w-[120px] text-black rounded-sm border-t-0">
+              {(Object.entries(timeFormats) as [TimeFormat, { minutes: number; label: string }][]).map(([format, { label }]) => (
+                <div 
+                  key={format}
+                  onClick={() => {
+                    setTimeFormat(format)
+                    const secs = timeFormats[format].minutes * 60
+                    setWhiteTime(secs)
+                    setBlackTime(secs)
+                  }} 
+                  className={`px-3 py-1 hover:bg-[#316AC5] hover:text-white cursor-pointer ${timeFormat === format ? "bg-[#316AC5] text-white font-bold" : ""}`}
+                >
+                  {label}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* XP Body Container */}
@@ -1312,7 +1436,12 @@ export function CRTChess() {
           <div className="lg:col-span-7 flex flex-col items-center">
             {/* CPU Stats */}
             <div className="w-full max-w-[28rem] md:max-w-[32rem] flex items-center justify-between text-xs mb-2 px-1 text-black font-bold">
-              <span>🖥️ CPU (Black) {aiThinking && " thinking..."}</span>
+              <div className="flex items-center gap-2">
+                <span>🖥️ CPU (Black) {aiThinking && " thinking..."}</span>
+                <span style={{ color: blackTime <= 10 ? "#C00000" : "#000000", fontFamily: "monospace" }}>
+                  ⏱ {formatTime(blackTime)}
+                </span>
+              </div>
               {renderCapturedPieces(captured.w, "w")}
             </div>
 
@@ -1421,7 +1550,12 @@ export function CRTChess() {
 
             {/* Player Stats */}
             <div className="w-full max-w-[28rem] md:max-w-[32rem] flex items-center justify-between text-xs mt-2 px-1 text-black font-bold">
-              <span>👤 User (White) {turn === "w" && " your turn"}</span>
+              <div className="flex items-center gap-2">
+                <span>👤 User (White) {turn === "w" && " your turn"}</span>
+                <span style={{ color: whiteTime <= 10 ? "#C00000" : "#000000", fontFamily: "monospace" }}>
+                  ⏱ {formatTime(whiteTime)}
+                </span>
+              </div>
               {renderCapturedPieces(captured.b, "b")}
             </div>
           </div>

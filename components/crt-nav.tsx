@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { label: "CHESS",   href: "#chess" },
   { label: "ABOUT",   href: "#about" },
   { label: "CONTACT", href: "#contact" },
+  { label: "Game",   href: "#game" },
 ]
 
 /* ── Windows XP taskbar nav ───────────────────────────── */

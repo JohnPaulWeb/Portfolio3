@@ -10,6 +10,7 @@ import { CRTTicker, CRTHero } from "@/components/crt-hero"
 import { CRTServices } from "@/components/crt-services"
 import { CRTProjects } from "@/components/crt-projects"
 import { CRTChess } from "@/components/crt-chess"
+import Game from "@/components/game"
 import { CRTAbout } from "@/components/crt-about"
 import { CRTContact } from "@/components/crt-contact"
 import { CRTFooter } from "@/components/crt-footer"
@@ -65,6 +66,14 @@ function SiteContent() {
           -- CHESS.EXE -------------------------------------------------
         </div>
         <CRTChess />
+
+         <div
+          className="max-w-6xl mx-auto px-6 text-xs tracking-[0.2em] py-2"
+          style={{ color: "var(--crt-brown-dim)", borderTop: "1px solid var(--crt-border-col)" }}
+        >
+          -- GAME.EXE --------------------------------------------------
+        </div>
+        <Game />
 
         <div
           className="max-w-6xl mx-auto px-6 text-xs tracking-[0.2em] py-2"
